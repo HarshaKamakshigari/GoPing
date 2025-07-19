@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/HarshaKamakshigari/GoPing/checker"
+	"os"
 )
 
 func main() {

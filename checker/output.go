@@ -2,23 +2,22 @@ package checker
 
 import (
 	"fmt"
-	"github.com/olekukonko/tablewriter"
-	"os"
 )
 
 func PrintResults(results []Result) {
-	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{"URL", "Status", "Time (ms)", "SSL Expiry", "Local → Remote IP"})
+	fmt.Println("==========================================================================================================================")
+	fmt.Printf("%-30s %-10s %-10s %-12s %-30s\n", "URL", "STATUS", "TIME(ms)", "SSL EXPIRY", "LOCAL → REMOTE IP")
+	fmt.Println("------------------------------------------------------------------------------------")
 
 	for _, r := range results {
-		table.Append([]string{
+		fmt.Printf(
+			"%-30s %-10s %-10d %-12s %-30s\n",
 			r.URL,
 			r.Status,
-			fmt.Sprintf("%d", r.ResponseTime),
+			r.ResponseTime,
 			r.SSLEnd,
 			fmt.Sprintf("%s → %s", r.LocalIP, r.RemoteIP),
-		})
+		)
 	}
-
-	table.Render()
+	fmt.Println("==========================================================================================================================")
 }
